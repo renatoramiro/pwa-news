@@ -1,0 +1,42 @@
+body {
+    background-color: #f7f7f7;
+}
+
+header {
+    background-color: #9933cc;
+}
+
+aside, div.sidebar {
+    width: 250px;
+}
+
+section {
+    width: 650px;
+}
+
+footer, nav {
+    background-color: #0099cc;
+    height: 40px;
+}
+
+nav input {
+    margin: 10px;
+}
+
+li {
+    cursor: pointer;
+}
+
+.row {
+    display: -webkit-box;;
+}
+
+.card {
+    width: 600px;
+    background-color: white;
+}
+
+.card img {
+    width: 300px;
+}
+

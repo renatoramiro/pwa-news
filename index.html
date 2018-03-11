@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>PWA NEWS</title>
+
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <header>
+            <h1>PWA NEWS</h1>
+        </header>
+        <nav>
+            <input id="search" placeholder="Search">
+        </nav>
+
+        <div class="row">
+
+            <div class="sidebar">
+                <ul>
+                    <li id="headline">Headline</li>
+                    <li id="health">Health</li>
+                    <li id="sports">Sports</li>
+                    <li id="entertainment">Entertainment</li>
+                    <li id="technology">Technology</li>
+                </ul>
+            </div>
+
+            <section>
+                <h2 id="menu-title"></h2>
+                <div id="news"></div>
+            </section>
+
+        </div>
+
+        <footer>
+            <p>PWA NEWS - Version: 0.1.1</p>
+        </footer>
+
+        <script src="library/jquery-3.3.1.min.js"></script>
+        <script src="library/moment.min.js"></script>
+
+        <script src="js/api.js"></script>
+    </body>
+</html>
