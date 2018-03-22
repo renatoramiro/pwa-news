@@ -24,36 +24,40 @@
     function success(data) {
         var divNews = $('#news');
         divNews.empty();
-        for (var i = 0; i < data.articles.length; ++i) {
+        setTopNews( data.articles[0]);
+        for (var i = 1; i < data.articles.length; ++i) {
             divNews.append(getNewsHtml(data.articles[i]));
+        }
+    }
+
+    function setTopNews(article) {
+        if(article) {
+            $('#top-news-title').text(article.title);
+            $('#top-news-description').text(article.description);
+            $('#top-news-image').attr('src', article.urlToImage).attr('alt', article.title);
+            $('#top-news-link').attr('href', article.url);
         }
     }
 
     $("#headline").click(function () {
         category = null;
-        search = null;
-        $("#search").val('');
-        getNews();
+        activeMenu($(this));
     });
     $("#health").click(function () {
         category = 'health';
-        search = null;
-        getNews();
+        activeMenu($(this));
     });
     $("#sports").click(function () {
         category = 'sports';
-        search = null;
-        getNews();
+        activeMenu($(this));
     });
     $("#entertainment").click(function () {
         category = 'entertainment';
-        search = null;
-        getNews();
+        activeMenu($(this));
     });
     $("#technology").click(function () {
         category = 'technology';
-        search = null;
-        getNews();
+        activeMenu($(this));
     });
     $("#search").keypress(function (ev) {
         if (ev.which == 13) {
@@ -66,58 +70,71 @@
         }
     });
 
-    function setMenuTitle(text) {
-        $('#menu-title').text(text);
+    function activeMenu(menu) {
+        search = null;
+        $("#search").val('');
+        $('li.active').removeClass('active');
+        menu.addClass('active');
+        getNews();
     }
 
     function getCategory() {
         if (category) {
-            setMenuTitle(category);
             return '&category=' + category
         }
-        setMenuTitle('headline');
         return '';
     }
 
     function getSearch() {
         if (search) {
-            setMenuTitle('Search');
             return '&q=' + search
         }
         return '';
     }
 
     function getNewsHtml(article) {
-        return $('<div>')
-            .addClass('card')
-            .append(
+
+        var card = $('<div>').addClass('card col-12 col-sm-2 col-md-3 col-xl-3');
+
+        card = addImage(card);
+        card = addBodyTitle(card);
+        card = addBodyActions(card);
+
+        return card;
+
+        function addImage(card) {
+            if (article.urlToImage) {
+                return card.append(
+                    $('<img>')
+                        .attr('src', article.urlToImage)
+                        .attr('alt', article.title)
+                        .addClass('card-img-top')
+                );
+            }
+            return card;
+        }
+
+        function addBodyTitle(card) {
+            return card.append(
                 $('<div>')
-                    .append(
-                        $('<div>')
-                            .append($('<img>').attr('src', article.urlToImage))
-                            .append(
-                                $('<div>')
-                                    .append($('<p>').append(article.title))
-                                    .append(
-                                        $('<div>')
-                                            .append($('<p>').append(article.author))
-                                            .append(
-                                                $('<div>').append(
-                                                    $('<p>').append(moment(article.publishedAt).fromNow())
-                                                )
-                                            )
-                                    )
-                            )
-                    )
-                    .append(
-                        $('<div>')
-                            .append($('<button>').append('Read Article'))
-                            .click(function () {
-                                window.open(article.url, '_blank');
-                            })
-                    )
-                    .append($('<p>').append(article.description))
+                    .addClass('card-body')
+                    .append($('<h5>').addClass('card-title').append(article.title))
+                    .append($('<h6>').addClass('card-subtitle mb-2 text-muted')
+                        .append(moment(article.publishedAt).fromNow()))
+                    .append($('<p>').addClass('card-text').append(article.description))
             );
+        }
+
+        function addBodyActions(card) {
+            return card.append(
+                $('<div>')
+                    .addClass('card-body')
+                    .append($('<button>').append('Read Article').addClass('btn btn-link').attr('type', 'button'))
+                    .click(function () {
+                        window.open(article.url, '_blank');
+                    })
+            );
+        }
     }
 
 })();

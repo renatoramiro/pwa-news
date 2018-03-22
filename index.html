@@ -1,45 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>PWA NEWS</title>
+<head>
+    <meta charset="utf-8">
+    <title>PWA NEWS</title>
 
-        <link rel="stylesheet" href="css/main.css">
-    </head>
-    <body>
-        <header>
-            <h1>PWA NEWS</h1>
-        </header>
-        <nav>
-            <input id="search" placeholder="Search">
-        </nav>
-
-        <div class="row">
-
-            <div class="sidebar">
-                <ul>
-                    <li id="headline">Headline</li>
-                    <li id="health">Health</li>
-                    <li id="sports">Sports</li>
-                    <li id="entertainment">Entertainment</li>
-                    <li id="technology">Technology</li>
-                </ul>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="container">
+    <header class="py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col col-lg-2"></div>
+            <div class="col-md-auto text-center">
+                <h2 class="header-logo text-success">PWA News</h2>
             </div>
-
-            <section>
-                <h2 id="menu-title"></h2>
-                <div id="news"></div>
-            </section>
-
+            <div class="col col-lg-2"></div>
         </div>
+    </header>
 
-        <footer>
-            <p>PWA NEWS - Version: 0.1.1</p>
-        </footer>
+    <nav class="navbar navbar-toggleable-md navbar-light">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li id="headline" class="nav-item active"><a class="nav-link" href="#">Headline</a></li>
+                <li id="health" class="nav-item"><a class="nav-link" href="#">Health</a></li>
+                <li id="sports" class="nav-item"><a class="nav-link" href="#">Sports</a></li>
+                <li id="entertainment" class="nav-item"><a class="nav-link" href="#">Entertainment</a></li>
+                <li id="technology" class="nav-item"><a class="nav-link" href="#">Technology</a></li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search"
+                       aria-label="Field Search">
+            </form>
+        </div>
+    </nav>
 
-        <script src="library/jquery-3.3.1.min.js"></script>
-        <script src="library/moment.min.js"></script>
+    <section>
+        <div id="top-news" class="row jumbotron p-3 p-md-5 text-white rounded bg-dark">
+            <div class="col-12 col-sm-6 px-0">
+                <h4 id="top-news-title" class="font-italic"></h4>
+                <p id="top-news-description" class="lead my-3"></p>
+                <p class="lead mb-0">
+                    <a href="#" target="_blank" id="top-news-link" class="text-white font-weight-bold">Continue reading...</a>
+                </p>
+            </div>
+            <div class="col-12 col-sm-6 px-0">
+                <img id="top-news-image" src="#"/>
+            </div>
+        </div>
+        <div id="news" class="row"></div>
+    </section>
+</div>
 
-        <script src="js/api.js"></script>
-    </body>
+<footer>
+    <p>PWA NEWS - Version: 0.1.1</p>
+</footer>
+
+<script src="library/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+<script src="library/moment.min.js"></script>
+
+<script src="js/api.js"></script>
+
+</body>
 </html>
