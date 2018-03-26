@@ -24,14 +24,14 @@
     function success(data) {
         var divNews = $('#news');
         divNews.empty();
-        setTopNews( data.articles[0]);
-        for (var i = 1; i < data.articles.length; ++i) {
+        //setTopNews( data.articles[0]);
+        for (var i = 0; i < data.articles.length; ++i) {
             divNews.append(getNewsHtml(data.articles[i]));
         }
     }
 
     function setTopNews(article) {
-        if(article) {
+        if (article) {
             $('#top-news-title').text(article.title);
             $('#top-news-description').text(article.description);
             $('#top-news-image').attr('src', article.urlToImage).attr('alt', article.title);
@@ -94,10 +94,11 @@
 
     function getNewsHtml(article) {
 
-        var card = $('<div>').addClass('card col-12 col-sm-2 col-md-3 col-xl-3');
+        var card = $('<div>').addClass('card row');
 
-        card = addImage(card);
+        //card = addImage(card);
         card = addBodyTitle(card);
+        card = addDescription(card);
         card = addBodyActions(card);
 
         return card;
@@ -115,21 +116,47 @@
         }
 
         function addBodyTitle(card) {
-            return card.append(
-                $('<div>')
-                    .addClass('card-body')
-                    .append($('<h5>').addClass('card-title').append(article.title))
-                    .append($('<h6>').addClass('card-subtitle mb-2 text-muted')
-                        .append(moment(article.publishedAt).fromNow()))
-                    .append($('<p>').addClass('card-text').append(article.description))
-            );
+            return card
+                .append(
+                    $('<div>')
+                        .addClass('col-xs-8')
+                        .append($('<h4>').addClass('card-title').append(article.title))
+                    // .append($('<h6>').addClass('card-subtitle mb-2 text-muted')
+                    //     .append(moment(article.publishedAt).fromNow()))
+                    // .append($('<p>').addClass('card-text').append(article.description))
+                )
+                .append(
+                    $('<div>')
+                        .addClass('col-xs-4')
+                        .append(
+                            $('<img>')
+                                .attr('src', article.urlToImage? article.urlToImage: 'image/placeholder-image.png')
+                                .attr('alt', article.title)
+                                .addClass('card-img-top')
+                        )
+                );
+        }
+
+        function addDescription(card) {
+            return card
+                .append(
+                    $('<div>')
+                        .addClass('col-xs-12 hide')
+                        .append($('<p>').addClass('card-text').append(article.description))
+                );
         }
 
         function addBodyActions(card) {
             return card.append(
                 $('<div>')
-                    .addClass('card-body')
-                    .append($('<button>').append('Read Article').addClass('btn btn-link').attr('type', 'button'))
+                    .addClass('col-xs-12')
+                    .append($('<h6>').addClass('col-6 card-date')
+                        .append(moment(article.publishedAt).fromNow()))
+                    .append($('<button>')
+                        .append('<i class="material-icons">keyboard_arrow_down</i>')
+                        .append('Show more')
+                        .addClass('card-button float-right')
+                        .attr('type', 'button'))
                     .click(function () {
                         window.open(article.url, '_blank');
                     })
