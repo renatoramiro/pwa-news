@@ -12,16 +12,28 @@ p, h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
+#news {
+    margin-top: 56px;
+}
+
 .navbar {
+    position: fixed;
+    top: 0;
     width: 100%;
     color: #fff;
-    padding: 0 16px;
+    line-height: 56px;
+    padding: 0 10px;
     background-color: #00bcd4;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .navbar i.material-icons {
-    line-height: 56px;
+    line-height: 52px;
+    color: white;
+}
+
+.navbar h2 {
+    margin-left: 60px;
 }
 
 img, embed, object, video {
@@ -32,7 +44,6 @@ img, embed, object, video {
     .navbar {
         height: 56px;
         max-height: 56px;
-        line-height: 56px;
     }
 }
 
@@ -43,10 +54,6 @@ img, embed, object, video {
 button {
     border: none;
     background: transparent;
-}
-
-.hide {
-    display: none;
 }
 
 .card {

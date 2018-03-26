@@ -94,7 +94,7 @@
 
     function getNewsHtml(article) {
 
-        var card = $('<div>').addClass('card row');
+        var card = $('<div>').addClass('card row col-xs-12 col-md-6');
 
         //card = addImage(card);
         card = addBodyTitle(card);
@@ -119,15 +119,12 @@
             return card
                 .append(
                     $('<div>')
-                        .addClass('col-xs-8')
+                        .addClass('col-xs-8 col-md-8')
                         .append($('<h4>').addClass('card-title').append(article.title))
-                    // .append($('<h6>').addClass('card-subtitle mb-2 text-muted')
-                    //     .append(moment(article.publishedAt).fromNow()))
-                    // .append($('<p>').addClass('card-text').append(article.description))
                 )
                 .append(
                     $('<div>')
-                        .addClass('col-xs-4')
+                        .addClass('col-xs-4 col-md-4')
                         .append(
                             $('<img>')
                                 .attr('src', article.urlToImage? article.urlToImage: 'image/placeholder-image.png')
@@ -141,7 +138,7 @@
             return card
                 .append(
                     $('<div>')
-                        .addClass('col-xs-12 hide')
+                        .addClass('col-xs-12 hide-xs')
                         .append($('<p>').addClass('card-text').append(article.description))
                 );
         }
@@ -149,13 +146,13 @@
         function addBodyActions(card) {
             return card.append(
                 $('<div>')
-                    .addClass('col-xs-12')
+                    .addClass('col-xs-12 col-md-12')
                     .append($('<h6>').addClass('col-6 card-date')
                         .append(moment(article.publishedAt).fromNow()))
                     .append($('<button>')
                         .append('<i class="material-icons">keyboard_arrow_down</i>')
                         .append('Show more')
-                        .addClass('card-button float-right')
+                        .addClass('card-button float-right hide-md')
                         .attr('type', 'button'))
                     .click(function () {
                         window.open(article.url, '_blank');

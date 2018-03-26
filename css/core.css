@@ -9,7 +9,9 @@
 [class*="col-"] {
     float: left;
 }
+
 @media only screen and (max-width: 576px) {
+    .hide-xs {display: none;}
     .col-xs-auto {width: auto;}
     .col-xs-1 {width: 8.33%;}
     .col-xs-2 {width: 16.66%;}
@@ -24,7 +26,9 @@
     .col-xs-11 {width: 91.66%;}
     .col-xs-12 {width: 100%;}
 }
-@media only screen and (max-width: 991.98px) {
+@media only screen and (min-width: 577px) and (max-width: 992px) {
+    .hide-md {display: none;}
+    .col-md-auto {width: auto;}
     .col-md-1 {width: 8.33%;}
     .col-md-2 {width: 16.66%;}
     .col-md-3 {width: 25%;}
