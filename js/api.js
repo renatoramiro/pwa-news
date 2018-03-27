@@ -21,9 +21,19 @@
         $.get(url, success);
     }
 
+    function addListHeader(card) {
+        return card.append(
+            $('<ons-list-header>').append('Headline')
+        );
+    }
+
     function success(data) {
         var divNews = $('#news');
         divNews.empty();
+        
+        var card = $('ons-list');
+        card = addListHeader(card);
+
         setTopNews( data.articles[0]);
         for (var i = 1; i < data.articles.length; ++i) {
             divNews.append(getNewsHtml(data.articles[i]));
@@ -93,35 +103,33 @@
     }
 
     function getNewsHtml(article) {
-
-        var card = $('<div>').addClass('card col-12 col-sm-2 col-md-3 col-xl-3');
-
-        card = addImage(card);
-        card = addBodyTitle(card);
-        card = addBodyActions(card);
+        var card = $('ons-list');
+        card = addListItem(card);
 
         return card;
 
-        function addImage(card) {
-            if (article.urlToImage) {
-                return card.append(
-                    $('<img>')
-                        .attr('src', article.urlToImage)
-                        .attr('alt', article.title)
-                        .addClass('card-img-top')
-                );
-            }
-            return card;
+        function addListItem(card) {
+            var item = $('<ons-list-item>');
+            item = addImage(item);
+            item = addBodyTitle(item);
+            return card.append(item);
         }
 
-        function addBodyTitle(card) {
-            return card.append(
+        function addImage(item) {
+            return item.append(
                 $('<div>')
-                    .addClass('card-body')
-                    .append($('<h5>').addClass('card-title').append(article.title))
-                    .append($('<h6>').addClass('card-subtitle mb-2 text-muted')
-                        .append(moment(article.publishedAt).fromNow()))
-                    .append($('<p>').addClass('card-text').append(article.description))
+                    .addClass('left').
+                    append(
+                        $('<img>').attr('src', article.urlToImage)
+                    )
+            );
+        }
+
+        function addBodyTitle(item) {
+            return item.append(
+                $('<div>').addClass('center').append(
+                    $('<span>').addClass('list-item__title').append(article.title)
+                )
             );
         }
 
