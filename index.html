@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>PWA NEWS</title>
 
-    <link rel="stylesheet" href="css/onsenui.css">
-    <link rel="stylesheet" href="css/onsen-css-components.min.css">
-    <link rel="stylesheet" href="css/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="css/material-design-iconic-font/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="css/font_awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/main.css">
+<head>
+	<meta charset="utf-8">
+	<title>PWA NEWS</title>
+
+	<link rel="stylesheet" href="css/onsenui.css">
+	<link rel="stylesheet" href="css/onsen-css-components.min.css">
+	<link rel="stylesheet" href="css/ionicons/css/ionicons.min.css">
+	<link rel="stylesheet" href="css/material-design-iconic-font/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" href="css/font_awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/core.css">
 </head>
+
 <body>
 
-    <ons-page>
-        <ons-toolbar>
-            <div class="center">PWA News</div>
-        </ons-toolbar>
+	<ons-page>
+		<ons-toolbar>
+			<div class="center">PWA News</div>
+		</ons-toolbar>
 
-        <!-- Your page content here. -->
+		<!-- Your page content here. -->
 
-        <ons-list id="news">
-                <!-- <ons-list-item>
+		<ons-list id="news">
+			<!-- <ons-list-item>
                     <div class="left">
                         <img class="list-item__thumbnail" src="https://placekitten.com/g/40/40">
                     </div>
@@ -29,25 +32,26 @@
                         <span class="list-item__title">Cutest kitty</span><span class="list-item__subtitle">On the Internet</span>
                     </div>
                 </ons-list-item> -->
-        </ons-list>
-    </ons-page>
+		</ons-list>
+	</ons-page>
 
-<script src="library/jquery-3.3.1.min.js"></script>
-<script src="library/onsenui.min.js"></script>
-<script src="library/moment.min.js"></script>
+	<script src="library/jquery-3.3.1.min.js"></script>
+	<script src="library/onsenui.min.js"></script>
+	<script src="library/moment.min.js"></script>
 
-<script src="js/api.js"></script>
+	<script src="js/api.js"></script>
 
-<script>
-	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.register('./service-worker.js')
-			.then(function (registration) {
-				console.log('Registrando: ' + registration);
-			}).catch(function (error) {
-				console.error(error);
-			});
-	}
-</script>
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('./service-worker.js')
+				.then(function (registration) {
+					console.log('Registrando: ' + registration);
+				}).catch(function (error) {
+					console.error(error);
+				});
+		}
+	</script>
 
 </body>
+
 </html>
