@@ -4,15 +4,16 @@
     var category = null;
     var search = null;
 
-    var API = 'https://newsapi.org/v2/';
-    var ENDPOINT_HEADLINES = 'top-headlines?';
+    var API = 'http://localhost:3000/';
+    var ENDPOINT_HEADLINES = 'news?';
     var ENDPOINT_EVERYTHING = 'everything?';
     var API_KEY = 'apiKey=c5a59e6e745f45849e2e56af4efad07d';
 
     getNews();
 
     function getNews() {
-        var url = API + ENDPOINT_HEADLINES + 'country=br&' + API_KEY + getCategory();
+        // var url = API + ENDPOINT_HEADLINES + 'country=br&' + API_KEY + getCategory();
+        var url = API + ENDPOINT_HEADLINES;
         $.get(url, success);
     }
 
@@ -34,9 +35,9 @@
         var card = $('ons-list');
         card = addListHeader(card);
 
-        setTopNews( data.articles[0]);
-        for (var i = 1; i < data.articles.length; ++i) {
-            divNews.append(getNewsHtml(data.articles[i]));
+        setTopNews( data[0]);
+        for (var i = 1; i < data.length; ++i) {
+            divNews.append(getNewsHtml(data[i]));
         }
     }
 
