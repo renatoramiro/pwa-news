@@ -3,7 +3,8 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>PWA NEWS</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PWA News</title>
 
 	<link rel="stylesheet" href="css/onsenui.css">
 	<link rel="stylesheet" href="css/onsen-css-components.min.css">
@@ -18,21 +19,51 @@
 
 	<ons-page>
 		<ons-toolbar>
+			<div class="right">
+	      <ons-toolbar-button class="hide-sm hide-md" id="splitterMenu">
+	        <ons-icon icon="md-menu"></ons-icon>
+	      </ons-toolbar-button>
+	    </div>
+
 			<div class="center">PWA News</div>
 		</ons-toolbar>
 
-		<!-- Your page content here. -->
+		<ons-splitter>
+			<ons-splitter-side id="menu" side="right" width="50%" collapse swipeable>
+				<ons-page>
+					<ons-list>
+						<ons-list-item tappable class="menu-headline">
+							Headline
+						</ons-list-item>
+						<ons-list-item tappable class="menu-health">
+							Health
+						</ons-list-item>
+						<ons-list-item tappable class="menu-sports">
+							Sports
+						</ons-list-item>
+						<ons-list-item tappable class="menu-entertainment">
+							Entertainment
+						</ons-list-item>
+						<ons-list-item tappable class="menu-technology">
+							Technology
+						</ons-list-item>
+					</ons-list>
+				</ons-page>
+			</ons-splitter-side>
+			<ons-splitter-content id="content"></ons-splitter-content>
+		</ons-splitter>
 
-		<ons-list id="news">
-			<!-- <ons-list-item>
-                    <div class="left">
-                        <img class="list-item__thumbnail" src="https://placekitten.com/g/40/40">
-                    </div>
-                    <div class="center">
-                        <span class="list-item__title">Cutest kitty</span><span class="list-item__subtitle">On the Internet</span>
-                    </div>
-                </ons-list-item> -->
+		<ons-list class="hide-xs">
+			<ons-list-header>
+				<span id="headline" class="header menu-headline">Headline</span>
+				<span id="health" class="header menu-health">Health</span>
+				<span id="sports" class="header menu-sports">Sports</span>
+				<span id="entertainment" class="header menu-entertainment">Entertainment</span>
+				<span id="technology" class="header menu-technology">Technology</span>
+			</ons-list-header>
 		</ons-list>
+
+		<div id="news"></div>
 	</ons-page>
 
 	<script src="library/jquery-3.3.1.min.js"></script>
@@ -52,6 +83,5 @@
 		}
 	</script>
 
-</body>
-
+	</body>
 </html>

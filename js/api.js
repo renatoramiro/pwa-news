@@ -4,18 +4,19 @@
 	var category = null;
 	var search = null;
 
-	var API = 'http://localhost:3000/';
-	// var API = 'https://newsapi.org/v2/';
-	var ENDPOINT_HEADLINES = 'news?';
-	// var ENDPOINT_HEADLINES = 'top-headlines?';
+	// var API = 'http://localhost:3000/';
+	var API = 'https://newsapi.org/v2/';
+	// var ENDPOINT_HEADLINES = 'news?';
+	var ENDPOINT_HEADLINES = 'top-headlines?';
 	var ENDPOINT_EVERYTHING = 'everything?';
 	var API_KEY = 'apiKey=c5a59e6e745f45849e2e56af4efad07d';
 
+	console.log($('#splitterMenu'));
 	getNews();
 
 	function getNews() {
-		// var url = API + ENDPOINT_HEADLINES + 'country=br&' + API_KEY + getCategory();
-		var url = API + ENDPOINT_HEADLINES;
+		var url = API + ENDPOINT_HEADLINES + 'country=br&' + API_KEY + getCategory();
+		// var url = API + ENDPOINT_HEADLINES;
 		$.get(url, success);
 	}
 
@@ -24,22 +25,13 @@
 		$.get(url, success);
 	}
 
-	function addListHeader(card) {
-		return card.append(
-			$('<ons-list-header>').append('Headline')
-		);
-	}
-
 	function success(data) {
 		var divNews = $('#news');
 		divNews.empty();
 
-		var card = $('ons-list');
-		card = addListHeader(card);
-
-		setTopNews(data[0]);
-		for (var i = 0; i < data.length; ++i) {
-			divNews.append(getNewsHtml(data[i]));
+		// setTopNews(data.articles[0]);
+		for (var i = 0; i < data.articles.length; ++i) {
+			divNews.append(getNewsHtml(data.articles[i]));
 		}
 	}
 
@@ -52,23 +44,23 @@
 		}
 	}
 
-	$("#headline").click(function () {
+	$(".menu-headline").click(function () {
 		category = null;
 		activeMenu($(this));
 	});
-	$("#health").click(function () {
+	$(".menu-health").click(function () {
 		category = 'health';
 		activeMenu($(this));
 	});
-	$("#sports").click(function () {
+	$(".menu-sports").click(function () {
 		category = 'sports';
 		activeMenu($(this));
 	});
-	$("#entertainment").click(function () {
+	$(".menu-entertainment").click(function () {
 		category = 'entertainment';
 		activeMenu($(this));
 	});
-	$("#technology").click(function () {
+	$(".menu-technology").click(function () {
 		category = 'technology';
 		activeMenu($(this));
 	});
@@ -86,8 +78,9 @@
 	function activeMenu(menu) {
 		search = null;
 		$("#search").val('');
-		$('li.active').removeClass('active');
+		$('span.active').removeClass('active');
 		menu.addClass('active');
+		var menuLateral = document.getElementById('menu').close();
 		getNews();
 	}
 
@@ -105,47 +98,47 @@
 		return '';
 	}
 
+	$('#splitterMenu').click(function() {
+		var menu = document.getElementById('menu');
+		menu.open();
+	});
+
 	function getNewsHtml(article) {
-		var card = $('ons-list');
+		var card = $('#news');
 		card = addListItem(card);
 
 		return card;
 
 		function addListItem(card) {
-			var item = $('<ons-list-item>');
+			var item = $('<div class="card">');
 			item = addImage(item);
 			item = addBodyTitle(item);
+			item = addBodyDescription(item);
 			return card.append(item);
 		}
 
 		function addImage(item) {
 			return item.append(
-				$('<div>')
-					.addClass('left').
-					addClass('hide-xs').
-					append(
-						$('<img>').attr('src', article.urlToImage)
-					)
+				$('<img>').attr('src', article.urlToImage).addClass('hide-xs')
 			);
 		}
 
 		function addBodyTitle(item) {
 			return item.append(
-				$('<div>').addClass('center')
-					.append(
-						$('<span>').addClass('list-item__title').append(article.title)
-					)
+				$('<h4>').addClass('card__title').append(article.title)
 			);
 		}
 
-		function addBodyActions(card) {
-			return card.append(
-				$('<div>')
-					.addClass('card-body')
-					.append($('<button>').append('Read Article').addClass('btn btn-link').attr('type', 'button'))
+		function addBodyDescription(item) {
+			return item.append(
+				$('<div>').addClass('card__content').append(
+					$('<p>').addClass('hide-xs').append(article.description)
+				).append(
+					$('<button>').addClass('button button--quiet').append('Read more')
 					.click(function () {
 						window.open(article.url, '_blank');
 					})
+				)
 			);
 		}
 	}

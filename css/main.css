@@ -38,3 +38,17 @@ img {
 button {
     cursor: pointer;
 }
+
+#news {
+    height: 200px;
+    padding: 1px 0 0 0;
+}
+
+span.header {
+    margin-right: 2%;
+}
+
+span.active {
+    color: black;
+    font-weight: bold;
+}

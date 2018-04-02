@@ -1,8 +1,8 @@
 (function () {
   'use strict';
   
-  var API = 'http://localhost:3000/';
-  // var API = 'https://newsapi.org/v2/';
+  // var API = 'http://localhost:3000/';
+  var API = 'https://newsapi.org/v2/';
   var cacheName = 'pwa_news_cache_v1';
   var cacheData = 'pwa_news_cache_data_v1';
   var filesToCache = [
@@ -13,6 +13,9 @@
     '/css/onsen-css-components.min.css',
     '/css/ionicons/css/ionicons.min.css',
     '/css/material-design-iconic-font/css/material-design-iconic-font.min.css',
+    '/css/material-design-iconic-font/fonts/Material-Design-Iconic-Font.ttf',
+    '/css/material-design-iconic-font/fonts/Material-Design-Iconic-Font.woff',
+    '/css/material-design-iconic-font/fonts/Material-Design-Iconic-Font.woff2',
     '/css/font_awesome/css/font-awesome.min.css',
     '/js/api.js',
     '/library/jquery-3.3.1.min.js',
