@@ -1,7 +1,6 @@
 (function () {
   'use strict';
   
-  // var API = 'http://localhost:3000/';
   var API = 'https://newsapi.org/v2/';
   var cacheName = 'pwa_news_cache_v1';
   var cacheData = 'pwa_news_cache_data_v1';
