@@ -45,7 +45,7 @@
 		<ons-page id="home">
 			<ons-toolbar>
 				<div class="left">
-					<ons-toolbar-button onclick="fn.openMenu()" class="hide-sm hide-md" id="splitterMenu">
+					<ons-toolbar-button onclick="fn.openMenu()" class="hide-sm hide-md">
 						<ons-icon icon="md-menu"></ons-icon>
 					</ons-toolbar-button>
 				</div>
@@ -70,7 +70,6 @@
 	<script src="library/jquery-3.3.1.min.js"></script>
 	<script src="library/onsenui.min.js"></script>
 	<script src="library/moment.min.js"></script>
-
 	<script src="js/api.js"></script>
 
 	<script>
@@ -90,13 +89,6 @@
 		window.fn.openMenu = function() {
 			var menu = document.getElementById('menu');
 			menu.open();
-		};
-
-		window.fn.load = function(page) {
-			var content = document.getElementById('content');
-			var menu = document.getElementById('menu');
-			content.load(page)
-				.then(menu.close.bind(menu));
 		};
 	</script>
 

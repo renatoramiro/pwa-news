@@ -37,7 +37,32 @@
 			$('#top-news-image').attr('src', article.urlToImage).attr('alt', article.title);
 			$('#top-news-link').attr('href', article.url);
 		}
-	}
+	}	
+
+	$(document)[0].addEventListener("init",function(event){
+		if(event.target.id == "home"){
+			$("#headline").click(function () {
+				category = null;
+				activeMenu($(this));
+			});
+			$("#health").bind('click', function () {
+				category = 'health';
+				activeMenu($(this));
+			});
+			$("#sports").click(function () {
+				category = 'sports';
+				activeMenu($(this));
+			});
+			$("#entertainment").click(function () {
+				category = 'entertainment';
+				activeMenu($(this));
+			});
+			$("#technology").click(function () {
+				category = 'technology';
+				activeMenu($(this));
+			});
+		}
+	});
 
 	$(".menu-headline").click(function () {
 		category = null;
@@ -92,11 +117,6 @@
 		}
 		return '';
 	}
-
-	$('#splitterMenu').click(function() {
-		var menu = document.getElementById('menu');
-		menu.open();
-	});
 
 	function getNewsHtml(article) {
 		var card = $('#news');
