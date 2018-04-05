@@ -14,15 +14,19 @@
       $('#installButton').click(function () {
         if (eventInstall) {
           eventInstall.prompt();
+          $('#installButton').hide();
     
           eventInstall.userChoice.then(function (choice) {
-            if (choice.outcome == "dismissed") {
-              alert("deu zebra");
-            } else {
-              alert("valeu broder");
+            if (choice.outcome == "accepted") {
+              var toast = $('<ons-toast>').append('Thanks for having installed our app.');
+              $("body").append(toast);
+              toast.show();
+              setTimeout(function () {
+                toast.hide();
+                toast = null;
+              }, 2500);
             }
-    
-            $('#installButton').hide();
+
             eventInstall = null;
           });
         }
