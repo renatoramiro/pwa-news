@@ -13,6 +13,14 @@
 	<link rel="stylesheet" href="css/font_awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/core.css">
+
+	<link rel="manifest" href="manifest.json">
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+	<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
@@ -52,6 +60,11 @@
 				<div class="center">
 					PWA News
 				</div>
+				<div class="right">
+					<ons-toolbar-button id="installButton" class="hide">
+						<ons-icon icon="md-download"></ons-icon>
+					</ons-toolbar-button>
+				</div>
 			</ons-toolbar>
 			<ons-list class="hide-xs">
 				<ons-list-header>
@@ -71,15 +84,18 @@
 	<script src="library/onsenui.min.js"></script>
 	<script src="library/moment.min.js"></script>
 	<script src="js/api.js"></script>
+	<script src="js/install-banner.js"></script>
 
 	<script>
 		if ('serviceWorker' in navigator) {
-			navigator.serviceWorker.register('./service-worker.js')
+			window.addEventListener('load', function () {
+				navigator.serviceWorker.register('./service-worker.js')
 				.then(function (registration) {
 					console.log('Registrando: ' + registration);
 				}).catch(function (error) {
 					console.error(error);
 				});
+			});
 		}
 	</script>
 

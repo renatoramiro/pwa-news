@@ -52,3 +52,7 @@ span.active {
     color: black;
     font-weight: bold;
 }
+
+.hide {
+    display: none;
+}

@@ -32,6 +32,20 @@
     );
   });
 
+  self.addEventListener('activate', function (event) {
+    console.log('Activating service Worker');
+    var cacheList = [cacheName, cacheData];
+    return event.waitUntil(
+      self.caches.keys().then(function (cacheNames) {
+        return Promise.all(cacheNames.map(function (cacheName) {
+          if (cacheList.indexOf(cacheName) === -1) {
+            self.caches.delete(cacheName);
+          }
+        }));
+      })
+    );
+  });
+
   self.addEventListener('fetch', function (e) {
     console.log('Fetchando service Worker');
     if (e.request.url.indexOf(API) === -1) {
