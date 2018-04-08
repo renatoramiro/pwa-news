@@ -23,7 +23,7 @@
 	<meta name="theme-color" content="#ffffff">
 </head>
 
-<body>
+<body id="body">
 	<ons-splitter>
 		<ons-splitter-side id="menu" side="left" width="50%" collapse swipeable>
 			<ons-page>
@@ -57,12 +57,25 @@
 						<ons-icon icon="md-menu"></ons-icon>
 					</ons-toolbar-button>
 				</div>
-				<div class="center">
+				<div class="center" id="pwaTitle">
 					PWA News
 				</div>
 				<div class="right">
 					<ons-toolbar-button id="installButton" class="hide">
 						<ons-icon icon="md-download"></ons-icon>
+					</ons-toolbar-button>
+
+					<ons-toolbar-button>
+						<ons-icon id="online" icon="ion-android-done-all" size="20px" style="color: rgb(18, 97, 60)"></ons-icon>
+						<ons-icon id="offline" icon="ion-android-warning" size="20px" style="color: rgb(112, 7, 7)"></ons-icon>
+					</ons-toolbar-button>
+
+					<ons-toolbar-button>
+						<ons-icon class="hide" id="charging" icon="ion-battery-charging" size="20px"></ons-icon>
+						<ons-icon class="hide" id="discharging-0" icon="ion-battery-empty" size="20px"></ons-icon>
+						<ons-icon class="hide" id="discharging-1" icon="ion-battery-low" size="20px"></ons-icon>
+						<ons-icon class="hide" id="discharging-2" icon="ion-battery-half" size="20px"></ons-icon>
+						<ons-icon class="hide" id="full-charged" icon="ion-battery-full" size="20px"></ons-icon>
 					</ons-toolbar-button>
 				</div>
 			</ons-toolbar>
@@ -85,6 +98,10 @@
 	<script src="library/moment.min.js"></script>
 	<script src="js/api.js"></script>
 	<script src="js/install-banner.js"></script>
+	<script src="js/push.js"></script>
+	<script src="js/battery.js"></script>
+	<script src="js/network-status.js"></script>
+	<script src="js/notification.js"></script>
 
 	<script>
 		if ('serviceWorker' in navigator) {

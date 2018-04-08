@@ -1,8 +1,11 @@
+globalVariable = {first_new: null, category: null};
+
 (function () {
 	'use strict';
 
 	var category = null;
 	var search = null;
+	var firstNews = "ULALALA";
 
 	var API = 'https://newsapi.org/v2/';
 	var ENDPOINT_HEADLINES = 'top-headlines?';
@@ -25,6 +28,12 @@
 		var divNews = $('#news');
 		divNews.empty();
 
+		if (data.articles && data.articles.length > 0) {
+			console.log('api', category);
+			console.log('api', data.articles[0].title);
+			globalVariable.first_new = data.articles[0];
+		}
+		
 		for (var i = 0; i < data.articles.length; ++i) {
 			divNews.append(getNewsHtml(data.articles[i]));
 		}
@@ -37,7 +46,7 @@
 			$('#top-news-image').attr('src', article.urlToImage).attr('alt', article.title);
 			$('#top-news-link').attr('href', article.url);
 		}
-	}	
+	}
 
 	$(document)[0].addEventListener("init",function(event){
 		if(event.target.id == "home"){
@@ -47,18 +56,22 @@
 			});
 			$("#health").bind('click', function () {
 				category = 'health';
+				globalVariable.category = 'health';
 				activeMenu($(this));
 			});
 			$("#sports").click(function () {
 				category = 'sports';
+				globalVariable.category = 'sports';
 				activeMenu($(this));
 			});
 			$("#entertainment").click(function () {
 				category = 'entertainment';
+				globalVariable.category = 'entertainment';
 				activeMenu($(this));
 			});
 			$("#technology").click(function () {
 				category = 'technology';
+				globalVariable.category = 'technology';
 				activeMenu($(this));
 			});
 		}
@@ -70,18 +83,22 @@
 	});
 	$(".menu-health").click(function () {
 		category = 'health';
+		globalVariable.category = 'health';
 		activeMenu($(this));
 	});
 	$(".menu-sports").click(function () {
 		category = 'sports';
+		globalVariable.category = 'sports';
 		activeMenu($(this));
 	});
 	$(".menu-entertainment").click(function () {
 		category = 'entertainment';
+		globalVariable.category = 'entertainment';
 		activeMenu($(this));
 	});
 	$(".menu-technology").click(function () {
 		category = 'technology';
+		globalVariable.category = 'technology';
 		activeMenu($(this));
 	});
 	$("#search").keypress(function (ev) {
