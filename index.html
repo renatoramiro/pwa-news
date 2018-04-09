@@ -70,6 +70,11 @@
 						<ons-icon id="offline" icon="ion-android-warning" size="20px" style="color: rgb(112, 7, 7)"></ons-icon>
 					</ons-toolbar-button>
 
+					<ons-toolbar-button id="toolbar-push">
+						<ons-icon id="push-enabled" icon="ion-ios-bell" size="20px"></ons-icon>
+						<ons-icon class="hide" id="push-disabled" icon="ion-ios-bell-outline" size="20px" style="color:gray"></ons-icon>
+					</ons-toolbar-button>
+
 					<ons-toolbar-button>
 						<ons-icon class="hide" id="charging" icon="ion-battery-charging" size="20px"></ons-icon>
 						<ons-icon class="hide" id="discharging-0" icon="ion-battery-empty" size="20px"></ons-icon>
@@ -101,7 +106,7 @@
 	<script src="js/push.js"></script>
 	<script src="js/battery.js"></script>
 	<script src="js/network-status.js"></script>
-	<script src="js/notification.js"></script>
+	<!-- <script src="js/notification.js"></script> -->
 
 	<script>
 		if ('serviceWorker' in navigator) {

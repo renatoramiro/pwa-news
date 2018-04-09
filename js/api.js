@@ -29,8 +29,6 @@ globalVariable = {first_new: null, category: null};
 		divNews.empty();
 
 		if (data.articles && data.articles.length > 0) {
-			console.log('api', category);
-			console.log('api', data.articles[0].title);
 			globalVariable.first_new = data.articles[0];
 		}
 		

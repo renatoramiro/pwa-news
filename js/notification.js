@@ -8,7 +8,6 @@
 	var firstNews;
 
 	function getCategory() {
-		console.log('notification', globalVariable.category);
 		if (globalVariable.category) {
 			return '&category=' + globalVariable.category;
 		}
@@ -22,21 +21,20 @@
 
 	function success(data) {
 		if (data.articles && data.articles.length > 0 && globalVariable.category) {
-			console.log('notification', data.articles[0].title);
 			firstNews = data.articles[0];
 		}
 	}
 
 	var permissionNotification = false;
-	if ('Notification' in window) {
-		permissionNotification = Notification.permission;
+	// if ('Notification' in window) {
+	// 	permissionNotification = Notification.permission;
 
-		if (permissionNotification) {
-			Notification.requestPermission(function (perm) {
-				permissionNotification = perm;
-			});
-		}
-	}
+	// 	if (permissionNotification) {
+	// 		Notification.requestPermission(function (perm) {
+	// 			permissionNotification = perm;
+	// 		});
+	// 	}
+	// }
 
 	function onBlur() {
 		if (permissionNotification) {
