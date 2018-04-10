@@ -1,6 +1,6 @@
 'use strict';
 
-window.addEventListener('load', function () {
+$(document)[0].addEventListener("init",function(event){
   var applicationServerPublicKey = 'BE67hAUY5A1CyW6Hyc0O-2bIpc4a7BIhaDaA1qToBYBbvqmrIuzB7tvfMvBq4rMIpzJ458TZWsBO_SGVDa45jAs';
 
   var pushButtonEnabled = $('#push-enabled');
@@ -10,30 +10,31 @@ window.addEventListener('load', function () {
   var swRegistration = null;
 
   function initializeUI() {
-    $('#push-enabled').on('click', function (event) {
-      disableButton();
+      pushButtonEnabled.on('click', function (event) {
+        disableButton();
+        if (isSubscribed) {
+          unsubscribeUser();
+        } else {
+          subscribeUser();
+        }
+      });
 
-      if (isSubscribed) {
-        unsubscribeUser();
-      } else {
-        subscribeUser();
-      }
-    });
+    if (swRegistration) {
+      swRegistration.pushManager.getSubscription()
+      .then(function (subscription) {
+        isSubscribed = !(subscription === null);
 
-    swRegistration.pushManager.getSubscription()
-    .then(function (subscription) {
-      isSubscribed = !(subscription === null);
+        updateSubscriptionOnServer(subscription);
 
-      updateSubscriptionOnServer(subscription);
-
-      if (isSubscribed) {
-        console.log('User IS subscribed.');
-      } else {
-        console.log('User is NOT subscribed.');
-      }
-  
-      updateButtons();
-    });
+        if (isSubscribed) {
+          console.log('User IS subscribed.');
+        } else {
+          console.log('User is NOT subscribed.');
+        }
+    
+        updateButtons();
+      });
+    }
   }
 
   function subscribeUser() {
@@ -83,24 +84,24 @@ window.addEventListener('load', function () {
 
   function updateButtons(params) {
     if (Notification.permission === 'denied') {
-      $('#push-enabled').addClass('hide');
-      $('#push-disabled').removeClass('hide');
+      pushButtonEnabled.addClass('hide');
+      pushButtonDisabled.removeClass('hide');
       updateSubscriptionOnServer(null);
       return;
     }
 
-    $('#push-disabled').addClass('hide');
+    pushButtonDisabled.addClass('hide');
 
     if (isSubscribed) {
-      $('#push-enabled').removeClass('hide').css('color', 'rgb(112, 7, 7)');
+      pushButtonEnabled.removeClass('hide').css('color', 'rgb(112, 7, 7)');
     } else {
-      $('#push-enabled').removeClass('hide').css('color', '');
+      pushButtonEnabled.removeClass('hide').css('color', '');
     }
   }
 
   function disableButton() {
-    $('#push-enabled').addClass('hide');
-    $('#push-disabled').removeClass('hide');
+    pushButtonEnabled.addClass('hide');
+    pushButtonDisabled.removeClass('hide');
   }
 
   function urlB64ToUint8Array(base64String) {
