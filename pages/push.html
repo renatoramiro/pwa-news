@@ -1,0 +1,47 @@
+<ons-page id="settings">
+  <ons-toolbar>
+    <div class="left">
+    </div>
+    <div class="center" id="pwaSettingsTitle">
+      PWA News
+    </div>
+    <div class="right">
+    </div>
+  </ons-toolbar>
+  <ons-list>
+    <ons-list-header>Settings</ons-list-header>
+    <ons-list-item>
+      <div class="center">
+        Enable notifications
+      </div>
+      <div class="right">
+        <ons-switch id="switch-notifications"></ons-switch>
+        <!-- <ons-icon id="push-enabled" icon="ion-ios-bell" size="20px"></ons-icon>
+        <ons-icon class="hide" id="push-disabled" icon="ion-ios-bell-outline" size="20px" style="color:gray"></ons-icon> -->
+      </div>
+    </ons-list-item>
+
+    <ons-list-item>
+      <div class="center">
+        Network Status
+      </div>
+      <div class="right">
+        <ons-icon id="online" class="online-status" icon="ion-wifi" size="20px" style="color: rgb(18, 97, 60)"></ons-icon>
+        <ons-icon id="offline" class="offline-status" icon="ion-android-warning" size="20px" style="color: rgb(112, 7, 7)"></ons-icon>
+      </div>
+    </ons-list-item>
+
+    <ons-list-item>
+      <div class="center">
+        Battery Status
+      </div>
+      <div class="right">
+        <ons-icon class="hide" id="charging" icon="ion-battery-charging" size="20px"></ons-icon>
+        <ons-icon class="hide" id="discharging-0" icon="ion-battery-empty" size="20px"></ons-icon>
+        <ons-icon class="hide" id="discharging-1" icon="ion-battery-low" size="20px"></ons-icon>
+        <ons-icon class="hide" id="discharging-2" icon="ion-battery-half" size="20px"></ons-icon>
+        <ons-icon class="hide" id="full-charged" icon="ion-battery-full" size="20px"></ons-icon>
+      </div>
+    </ons-list-item>
+  </ons-list>
+</ons-page>

@@ -1,0 +1,47 @@
+<ons-page id="home">
+  <ons-toolbar>
+    <div class="left">
+      <ons-toolbar-button onclick="fn.openMenu()" class="hide-sm hide-md">
+        <ons-icon icon="md-menu"></ons-icon>
+      </ons-toolbar-button>
+    </div>
+    <div class="center" id="pwaTitle">
+      PWA News
+    </div>
+    <div class="right">
+      <ons-toolbar-button id="installButton" class="hide">
+        <ons-icon icon="md-download"></ons-icon>
+      </ons-toolbar-button>
+
+      <!-- <ons-toolbar-button>
+        <ons-icon id="online" class="online-status" icon="ion-android-done-all" size="20px" style="color: rgb(18, 97, 60)"></ons-icon>
+        <ons-icon id="offline" class="offline-status" icon="ion-android-warning" size="20px" style="color: rgb(112, 7, 7)"></ons-icon>
+      </ons-toolbar-button> -->
+
+      <!-- <ons-toolbar-button id="toolbar-push">
+        <ons-icon id="push-enabled" icon="ion-ios-bell" size="20px"></ons-icon>
+        <ons-icon class="hide" id="push-disabled" icon="ion-ios-bell-outline" size="20px" style="color:gray"></ons-icon>
+      </ons-toolbar-button> -->
+
+      <!-- <ons-toolbar-button>
+        <ons-icon class="hide" id="charging" icon="ion-battery-charging" size="20px"></ons-icon>
+        <ons-icon class="hide" id="discharging-0" icon="ion-battery-empty" size="20px"></ons-icon>
+        <ons-icon class="hide" id="discharging-1" icon="ion-battery-low" size="20px"></ons-icon>
+        <ons-icon class="hide" id="discharging-2" icon="ion-battery-half" size="20px"></ons-icon>
+        <ons-icon class="hide" id="full-charged" icon="ion-battery-full" size="20px"></ons-icon>
+      </ons-toolbar-button> -->
+    </div>
+  </ons-toolbar>
+  
+  <ons-list class="hide-xs">
+    <ons-list-header>
+      <span id="headline" class="active header menu-headline">Headline</span>
+      <span id="health" class="header menu-health">Health</span>
+      <span id="sports" class="header menu-sports">Sports</span>
+      <span id="entertainment" class="header menu-entertainment">Entertainment</span>
+      <span id="technology" class="header menu-technology">Technology</span>
+    </ons-list-header>
+  </ons-list>
+  
+  <div id="news"></div>
+</ons-page>

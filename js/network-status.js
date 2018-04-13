@@ -16,7 +16,7 @@
 	window.addEventListener('offline', onOffline);
   
   $(document)[0].addEventListener("init",function(event){
-		if(event.target.id == "home"){
+		if(event.target.id == "settings"){
 			if (navigator.onLine) {
 				onOnline();
 			} else {

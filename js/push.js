@@ -1,25 +1,29 @@
+(function() {
 'use strict';
 
 $(document)[0].addEventListener("init",function(event){
+  if(event.target.id === "settings") {
   var applicationServerPublicKey = 'BE67hAUY5A1CyW6Hyc0O-2bIpc4a7BIhaDaA1qToBYBbvqmrIuzB7tvfMvBq4rMIpzJ458TZWsBO_SGVDa45jAs';
 
   var pushButtonEnabled = $('#push-enabled');
   var pushButtonDisabled = $('#push-disabled');
+  var pushSwitchNotification = $('#switch-notifications');
 
   var isSubscribed = false;
   var swRegistration = null;
 
   function initializeUI() {
-      pushButtonEnabled.on('click', function (event) {
+      pushSwitchNotification.change(function (event) {
         disableButton();
         if (isSubscribed) {
           unsubscribeUser();
         } else {
           subscribeUser();
         }
+        pushSwitchNotification.removeAttr("disabled");
       });
 
-    if (swRegistration) {
+    if (swRegistration && Notification.permission !== 'default') {
       swRegistration.pushManager.getSubscription()
       .then(function (subscription) {
         isSubscribed = !(subscription === null);
@@ -90,18 +94,21 @@ $(document)[0].addEventListener("init",function(event){
       return;
     }
 
-    pushButtonDisabled.addClass('hide');
+    // pushButtonDisabled.addClass('hide');
 
     if (isSubscribed) {
-      pushButtonEnabled.removeClass('hide').css('color', 'rgb(112, 7, 7)');
+      pushSwitchNotification.attr('checked', true);
+      // pushButtonEnabled.removeClass('hide').css('color', 'rgb(112, 7, 7)');
     } else {
-      pushButtonEnabled.removeClass('hide').css('color', '');
+      pushSwitchNotification.attr('checked', false);
+      // pushButtonEnabled.removeClass('hide').css('color', '');
     }
   }
 
   function disableButton() {
-    pushButtonEnabled.addClass('hide');
-    pushButtonDisabled.removeClass('hide');
+    pushSwitchNotification.attr('disabled', true);
+    // pushButtonEnabled.addClass('hide');
+    // pushButtonDisabled.removeClass('hide');
   }
 
   function urlB64ToUint8Array(base64String) {
@@ -122,7 +129,7 @@ $(document)[0].addEventListener("init",function(event){
   if ('serviceWorker' in navigator && 'PushManager' in window) {
     console.log('Service Worker and Push is supported');
   
-    navigator.serviceWorker.getRegistration('service-worker.js')
+    navigator.serviceWorker.register('pages/service-worker-push.js')
     .then(function (swReg) {
       console.log('Service Worker is registered', swReg);
       swRegistration = swReg;
@@ -134,4 +141,6 @@ $(document)[0].addEventListener("init",function(event){
   } else {
     console.warn('Push messaging is not supported');
   }
-});
+}
+}, false);
+})();
