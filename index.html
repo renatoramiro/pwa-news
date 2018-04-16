@@ -4,15 +4,15 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Simple PWA to display news">
 	<title>PWA News</title>
 
-	<link rel="stylesheet" href="css/onsenui.css">
-	<link rel="stylesheet" href="css/onsen-css-components.min.css">
-	<link rel="stylesheet" href="css/ionicons/css/ionicons.min.css">
-	<link rel="stylesheet" href="css/material-design-iconic-font/css/material-design-iconic-font.min.css">
-	<link rel="stylesheet" href="css/font_awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/core.css">
+	<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+	<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/onsenui/css/ionicons/css/ionicons.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/onsenui/css/material-design-iconic-font/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/onsenui/css/font_awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="build/build.css">
 
 	<link rel="manifest" href="manifest.json">
 	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
@@ -66,14 +66,7 @@
 	</ons-page>
 
 	<script src="library/jquery-3.3.1.min.js"></script>
-	<script src="library/onsenui.min.js"></script>
-	<script src="library/moment.min.js"></script>
-	<script src="js/api.js"></script>
-	<script src="js/install-banner.js"></script>
-	<script src="js/push.js"></script>
-	<script src="js/battery.js"></script>
-	<script src="js/network-status.js"></script>
-	<!-- <script src="js/notification.js"></script> -->
+	<script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
 
 	<script>
 		if ('serviceWorker' in navigator) {
@@ -87,7 +80,7 @@
 			});
 		}
 	</script>
-	<script src="js/push.js"></script>
+	<script src="build/build.js"></script>
 
 	<script>
 		window.fn = {};
