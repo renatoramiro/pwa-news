@@ -1,6 +1,4 @@
 var compressor = require('node-minify');
- 
-// Using Google Closure Compiler
 
 compressor.minify({
   compressor: 'no-compress',
@@ -13,6 +11,13 @@ compressor.minify({
   compressor: 'gcc',
   input: 'build/*.js',
   output: 'build/build.js',
+  callback: function (err, min) {}
+});
+
+compressor.minify({
+  compressor: 'no-compress',
+  input: ['css/main.css', 'css/core.css'],
+  output: 'build/build.css',
   callback: function (err, min) {}
 });
 

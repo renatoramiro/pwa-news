@@ -56,3 +56,7 @@ span.active {
 .hide {
     display: none;
 }
+
+.list-header--material {
+    font-size: 16px;
+}
